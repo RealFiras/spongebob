@@ -1,0 +1,5 @@
+[phases.setup]
+nixPkgs = ["python311", "socat"]
+
+[start]
+cmd = "socat -d -d TCP-LISTEN:9000,fork,reuseaddr,crnl EXEC:\"python3 -u ./Spongbob.py\",pty,setsid,ctty"
