@@ -1,5 +1,8 @@
 [phases.setup]
 nixPkgs = ["python311", "socat"]
 
+[phases.install]
+cmds = ["pip install -r requirements.txt"]
+
 [start]
 cmd = "socat -d -d TCP-LISTEN:9341,fork,reuseaddr,crnl EXEC:\"python3 -u ./Spongebob.py\",pty,setsid,ctty"
