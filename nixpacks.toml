@@ -1,5 +1,7 @@
 [phases.setup]
-nixPkgs = ["python311", "socat"]  # Python موجود، بس استدع pip عبر python3 -m
+# نثبت بايثون + كولوراما + سوكات من nix مباشرة
+nixPkgs = ["python311", "python311Packages.colorama", "socat"]
 
 [start]
+# نشغّل السكربت عبر socat على بورت 9000
 cmd = "socat -d -d TCP-LISTEN:8000,fork,reuseaddr,crnl EXEC:\"python3 -u ./Spongebob.py\",pty,setsid,ctty"
