@@ -1,5 +1,11 @@
 [phases.setup]
-nixPkgs = ["python311", "socat"]
+nixPkgs = ["python311", "socat"]  # Python موجود، بس استدع pip عبر python3 -m
+
+[phases.install]
+cmds = [
+  "python3 -m pip install --upgrade pip",
+  "python3 -m pip install -r requirements.txt"
+]
 
 [start]
 cmd = "socat -d -d TCP-LISTEN:9341,fork,reuseaddr,crnl EXEC:\"python3 -u ./Spongebob.py\",pty,setsid,ctty"
